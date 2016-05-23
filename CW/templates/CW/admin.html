@@ -8,29 +8,38 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        <span class="glyphicon glyphicon-bookmark"></span> Quick Shortcuts</h3>
+                        <span class="glyphicon glyphicon-bookmark"></span> Welcome {{user.username | capfirst}} |{% if user.is_superuser %} Admin {% endif %} {{perms.PW.is_ac}} {{perms.PW.is_pc}} {{perms.PW.is_sc}} {{perms.PW.is_admin}}</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-xs-6 col-md-6">
-                          <a href="#" class="btn btn-danger btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>Apps</a>
-                          <a href="#" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br/>Bookmarks</a>
-                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>Reports</a>
-                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Comments</a>
-                        </div>
-                        <div class="col-xs-6 col-md-6">
-                          <a href="#" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Users</a>
-                          <a href="#" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>Notes</a>
-                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br/>Photos</a>
-                          <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-tag"></span> <br/>Tags</a>
+                        <div class="col-md-12 col-md-12 text-center">
+                          <div class="title" style="text-center">
+                            <h3>Register</h3>
+                          </div>
+                          {% if user.is_superuser %}
+                          <a href="{% url 'registermemeber' %}" data-toggle="modal" class="btn btn-info btn-lg" role="button"><i class="fa fa-2x fa-user"></i> <br/> Members</a>
+                          <a href="{% url 'registerspeaker' %}" data-toggle="modal" class="btn btn-info btn-lg" role="button"><i class="fa fa-2x fa-bullhorn"></i><br/>Speakers</a>
+                          <a href="{% url 'registerstaff' %}" data-toggle="modal" class="btn btn-info btn-lg" role="button"><i class="fa fa-2x fa-users"></i> <br/>Staff</a>
+                          <a href="{% url 'registerconference' %}" data-toggle="modal" class="btn btn-info btn-lg" role="button"><i class="fa fa-2x fa-comments"></i><br/>Conference</a>
+                          <a href="{% url 'registerassistant' %}" data-toggle="modal" class="btn btn-info btn-lg" role="button"><i class="fa fa-2x fa-star-o"></i> <br/>Assistant</a>
+                          {% else %}
+                          <a href="{% url 'registermemeber' %}" data-toggle="modal" class="btn btn-info btn-lg disabled" role="button"><i class="fa fa-2x fa-user"></i> <br/> Members</a>
+                          {% if perms.PW.is_pc %}<a href="#" data-toggle="modal" data-target="#SpeakersModal" class="btn btn-info btn-lg" role="button"><i class="fa fa-2x fa-bullhorn"></i><br/>Speakers</a>{% else %}<a href="#" data-toggle="modal" data-target="#SpeakersModal" class="btn btn-info btn-lg disabled" role="button"><i class="fa fa-2x fa-bullhorn"></i><br/>Speakers</a>{% endif %}
+                          {% if perrm.PW.is_sc %}<a href="#" data-toggle="modal" data-target="#StaffModal" class="btn btn-info btn-lg" role="button"><i class="fa fa-2x fa-users"></i> <br/>Staff</a>{% else %}<a href="#" data-toggle="modal" data-target="#StaffModal" class="btn btn-info btn-lg disabled" role="button"><i class="fa fa-2x fa-users"></i> <br/>Staff</a>{% endif %}
+                          {% if perms.PW.is_pc %}<a href="#" data-toggle="modal" data-target="#ConferenceModal"  class="btn btn-info btn-lg" role="button"><i class="fa fa-2x fa-comments"></i><br/>Conference</a>{% else %}<a href="#" data-toggle="modal" data-target="#ConferenceModal"  class="btn btn-info btn-lg disabled" role="button"><i class="fa fa-2x fa-comments"></i><br/>Conference</a>{% endif%}
+                          {% if perms.PW.is_ac %}<a href="#" data-toggle="modal" data-target="#AssistantModal" class="btn btn-info btn-lg" role="button"><i class="fa fa-2x fa-star-o"></i> <br/>Assistant</a>{% else %}<a href="#" data-toggle="modal" data-target="#AssistantModal" class="btn btn-info btn-lg disabled" role="button"><i class="fa fa-2x fa-star-o"></i> <br/>Assistant</a>{% endif %}
+                          {% endif %}
+
                         </div>
                     </div>
-                    <a href="{% url 'logout' %}" class="btn btn-danger btn-lg btn-block" role="button"><i class="fa fa-sign-out" aria-hidden="true"></i> LogOut</a>
+                    <a href="{% url 'logout' %}" class="btn btn-default btn-lg btn-block"><i class="fa fa-sign-out" aria-hidden="true"></i> LogOut</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 {% else %}
 <h1>You don't have permission to be here asshole!!!</h1>
 {% endif %}

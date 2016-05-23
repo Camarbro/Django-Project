@@ -1,4 +1,5 @@
-body { padding-top:20px; }
+body { padding-top:20px;background: -webkit-linear-gradient(335deg, #00ced1, #191970) no-repeat fixed;
+  background: linear-gradient(115deg, #00ced1, #191970) no-repeat fixed;}
 .panel-body .btn:not(.btn-block) { width:120px;margin-bottom:10px; }
 
 
@@ -95,4 +96,76 @@ body { padding-top:20px; }
 
 .login-help{
   font-size: 12px;
+}
+
+.title > h3{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-family: 'Roboto';
+}
+
+.panel-body >.btn-default{
+  background: #FF1515;
+  color: white;
+}
+.panel-primary > .panel-heading{
+  background-color: #FF1515;
+}
+
+.panel-body > .row > .text-center >.btn{
+  margin: 15px 5px 15px 5px;
+}
+
+.modal{
+  font-family: 'Roboto'
+}
+
+.center {
+    margin-top:50px;
+}
+
+.modal-header {
+	padding-bottom: 5px;
+}
+
+.modal-footer {
+    	padding: 0;
+	}
+
+.modal-footer .btn-group button {
+	height:40px;
+	border-top-left-radius : 0;
+	border-top-right-radius : 0;
+	border: none;
+	border-right: 1px solid #ddd;
+}
+
+.modal-footer .btn-group:last-child > button {
+	border-right: 0;
+}
+
+.input-group-addon.primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(50, 118, 177);
+    border-color: rgb(40, 94, 142);
+}
+.input-group-addon.success {
+    color: rgb(255, 255, 255);
+    background-color: rgb(92, 184, 92);
+    border-color: rgb(76, 174, 76);
+}
+.input-group-addon.info {
+    color: rgb(255, 255, 255);
+    background-color: rgb(57, 179, 215);
+    border-color: rgb(38, 154, 188);
+}
+.input-group-addon.warning {
+    color: rgb(255, 255, 255);
+    background-color: rgb(240, 173, 78);
+    border-color: rgb(238, 162, 54);
+}
+.input-group-addon.danger {
+    color: rgb(255, 255, 255);
+    background-color: rgb(217, 83, 79);
+    border-color: rgb(212, 63, 58);
 }

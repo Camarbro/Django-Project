@@ -1,0 +1,79 @@
+{% extends 'base_admin.html' %}
+{% block title %}Regiser Members{% endblock %}
+{% block content %}
+<!-- line modal -->
+<div class="modal fade" data-backdrop = 'static' data-keyboard="false" id = "loginmodal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="lineModalLabel">Register Member</h3>
+      </div>
+      <div class="modal-body">
+        <!-- content goes here -->
+
+        <form role = "form" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control" name="username" id="id_username" placeholder="Username" required>
+              <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control" name="first_name" id="id_first_name" placeholder="First Name" required>
+              <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control" name="last_name" id="id_last_name" placeholder="Last Name" required>
+              <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group" data-validate = "password">
+              <input type="password" class="form-control" name="password1" id="id_password1" placeholder="Contraseña" required>
+              <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group" data-validate = "passwordv">
+              <input type="password" class="form-control" name="password2" id="id_password2" placeholder="Confirmar Contraseña" required>
+              <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <select class="form-control" id="id_Position" name="Position" placeholder="Position" required>
+                <option value = "">Position</option>
+                <option value="AD">Administrator</option>
+                <option value="AC">Assistance Coordinator</option>
+                <option value="PC">Presentations Coordinator</option>
+                <option value="SC">Staff Coordinator</option>
+              </select>
+              <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input id="id_is_superuser" name="is_superuser" type="checkbox"> Super User
+            </label>
+            <span class="helptext">, Select it just for admin</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+            <div class="btn-group" role="group">
+              <button type="reset" class="btn btn-default">Cancel</button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="submit" class="btn btn-default btn-hover-green">Save</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -63,17 +63,17 @@
         <div class="row">
           {% for p in Conferences %}
             <div class="col-md-4 col-sm-6 portfolio-item">
-                <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                <a href="#portfolioModal{{p.id}}" class="portfolio-link" data-toggle="modal">
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content">
                             <i class="fa fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img src="img/portfolio/roundicons.png" class="img-responsive" alt="">
+                    <img src="{{ p.Image.url }}" class="img-responsive" alt="">
                 </a>
                 <div class="portfolio-caption">
-                    <h4>Round Icons</h4>
-                    <p class="text-muted">Graphic Design</p>
+                    <h4>{{p.Title}}</h4>
+                    <p class="text-muted">{{p.Speaker}}</p>
                 </div>
             </div>
             {% endfor %}
@@ -94,9 +94,8 @@
           {% for a in Speaker %}
             <div class="col-sm-4">
                 <div class="team-member">
-                    <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
-                    <h4>Kay Garland</h4>
-                    <p class="text-muted">Lead Designer</p>
+                    <img src="{{a.Picture.url}}" class="img-responsive img-circle" alt="">
+                    <h4> {{a.Degree}} {{a.Name}} {{a.Last_Name}}</h4>
                     <ul class="list-inline social-buttons">
                         <li><a href="#"><i class="fa fa-twitter"></i></a>
                         </li>
@@ -160,5 +159,35 @@
         </div>
     </div>
 </section>
-
+{%for p in Conferences%}
+<!-- Portfolio Modal 1 -->
+<div class="portfolio-modal modal fade" id="portfolioModal{{p.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <!-- Project Details Go Here -->
+                        <h2>{{p.Title}}</h2>
+                        <img class="img-responsive img-centered" src="{{p.Image.url}}" alt="">
+                        <p>{{p.Description}}</p>
+                        <ul class="list-inline">
+                            <li>Date: {{p.Date}}</li>
+                            <li>Time: {{p.Time}}</li>
+                            <li>Speaker: {{p.Speaker}}</li>
+                        </ul>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 {% endblock %}

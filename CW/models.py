@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
+
+class QuerySet(models.QuerySet):
+    def get_speaker(self):
+        return "%s %s"%(self.Degree, self.Name)
+
+
 class Members(models.Model):
     id = models.AutoField(primary_key = True)
     User = models.OneToOneField(User)
@@ -34,6 +40,8 @@ class Speaker(models.Model):
     Degree = models.CharField(max_length = 3, choices = DEGREES, default = 'Degree')
     Name = models.CharField(max_length = 15)
     Last_Name = models.CharField(max_length = 15)
+    Picture = models.ImageField(upload_to='img_speakers/', null = True)
+    objects = QuerySet.as_manager()
 
     def __unicode__(self):
         return 'Name: %s %s' %(self.Degree, self.Name)
@@ -45,6 +53,7 @@ class Conference(models.Model):
     Speaker = models.OneToOneField(Speaker)
     Date = models.DateField(auto_now = False)
     Time = models.TimeField(auto_now = False)
+    Image = models.ImageField(upload_to = 'img_conference/', null = True)
 
     def __unicode__(self):
         return self.Title
