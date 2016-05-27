@@ -1,0 +1,39 @@
+{% extends 'base_admin.html' %}
+{% block title %}Report Assistants{% endblock %}
+{% block content %}
+<!-- line modal -->
+<div class="modal fade" data-backdrop = 'static' data-keyboard="false" id = "loginmodal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="lineModalLabel">Assistant Report</h3>
+      </div>
+      <div class="modal-body">
+        <!-- content goes here -->
+        {% if user.is_authenticated %}
+            <table class="table table-hover">
+            <th>User </th>
+            <th>Name</th>
+            <th>Last_Name</th>
+            <th>Position</th>
+          {% for item in object_list %}
+          <tr>
+          <td>{{item.User}}</td>
+          <td>{{item.Name}}</td>
+          <td>{{item.Last_Name}}</td>
+          <td>{{item.Position}}</td>
+          </tr>
+            {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+    <div class="modal-footer">
+      <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+        <div class="btn-group" role="group">
+          <a href="{% url 'admin' %}" class="btn btn-default">Go Back</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -44,7 +44,7 @@ class Speaker(models.Model):
     objects = QuerySet.as_manager()
 
     def __unicode__(self):
-        return 'Name: %s %s' %(self.Degree, self.Name)
+        return '%s %s' %(self.Degree, self.Name)
 
 class Conference(models.Model):
     id = models.AutoField(primary_key = True)

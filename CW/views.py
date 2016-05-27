@@ -115,3 +115,24 @@ class RegisterMember(FormView):
         p.User.user_permissions.add(perm)
         p.save()
         return super(RegisterMember, self).form_valid(form)
+
+class ReportAssistants(ListView):
+    template_name = 'CW/report_assistants.html'
+    model = Assistant
+    fields = '__all__'
+class ReportConfereces(ListView):
+    template_name = 'CW/report_conferences.html'
+    model = Conference
+    fields = '__all__'
+class ReportStaff(ListView):
+    template_name = 'CW/report_staff.html'
+    model = Staff
+    fields = '__all__'
+class ReportSpeakers(ListView):
+    template_name = 'CW/report_speakers.html'
+    model = Speaker
+    fields = '__all__'
+class ReportMembers(ListView):
+    template_name = 'CW/report_members.html'
+    model = Members
+    fields = '__all__'
